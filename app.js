@@ -15,50 +15,39 @@ let randomPokeArray = getRandomPokemon();
 
 
 renderPokemon(randomPokeArray);
-
+/*
 for (let item of randomPokeArray) {
     encounteredPokemon(item.id);
 }
 
 console.log(getPokedex());
-
+*/
 const playButton = document.getElementById('playbutton');
 //
 
-let pokeCaught = 1;
+let pokeCaught = 0;
 
 playButton.addEventListener('click', () => {
     
-    const capturedPokeEl = document.querySelector('input:checked');
-    console.log(capturedPokeEl.value);
-    let randomArrayAgain = getRandomPokemon();
-    renderPokemon(randomArrayAgain);
     
-    for (let item of randomArrayAgain) {
-        encounteredPokemon(item.id);
-        
+    
+    const capturedPokeEl = document.querySelector('input:checked');
 
+    for (let item of randomPokeArray) {
+        encounteredPokemon(item.id);
     }
-    const capturedPokedex = getPokedex();
-    if (capturedPokeEl.value === 1) {
-        const capturedObjectOne = findById(capturedPokedex, randomArrayAgain[0].id);
-        capturedObjectOne.captured++;
-    }
-    if (capturedPokeEl.value === 2) {
-        let capturedObjectTwo = findById(capturedPokedex, randomArrayAgain[1].id);
-        capturedObjectTwo.captured++;
-    }
-    if (capturedPokeEl.value === 3) {
-        let capturedObjectThree = findById(capturedPokedex, randomArrayAgain[2].id);
-        capturedObjectThree.captured++;
-        console.log(capturedObjectThree);
-    }
-    console.log(capturedPokedex);
-    setPokedex(capturedPokedex);
+    
+    capturedPokemon(capturedPokeEl, randomPokeArray);
+    
     console.log(getPokedex());
     pokeCaught = pokeCaught + 1;
     console.log(pokeCaught);
-  
+    
+    if (pokeCaught > 9) {
+        playButton.disabled = true;
+    }
+    randomPokeArray = getRandomPokemon();
+    renderPokemon(randomPokeArray);
 });
 
 
@@ -74,12 +63,23 @@ function renderPokemon(randomPokeArray) {
 
 
 }
-function capturedPokemon(id) {
-    
-    const pokedex = getPokedex();
-    
-    console.log(pokedex);
-    setPokedex(pokedex);
+function capturedPokemon(capturedPokeEl, randomArrayAgain) {
+    const capturedPokedex = getPokedex();
+    if (capturedPokeEl.value === '1') {
+        const capturedObjectOne = findById(capturedPokedex, randomArrayAgain[0].id);
+        console.log(capturedObjectOne);
+        capturedObjectOne.captured++;
+    }
+    if (capturedPokeEl.value === '2') {
+        const capturedObjectTwo = findById(capturedPokedex, randomArrayAgain[1].id);
+        capturedObjectTwo.captured++;
+    }
+    if (capturedPokeEl.value === '3') {
+        const capturedObjectThree = findById(capturedPokedex, randomArrayAgain[2].id);
+        capturedObjectThree.captured++;
+        console.log(capturedObjectThree);
+    }
+    setPokedex(capturedPokedex);
 }
 
 function encounteredPokemon(id) {
