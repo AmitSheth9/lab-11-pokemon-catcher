@@ -25,3 +25,33 @@ export function findById(trackerArray, id) {
     }
 }
 
+export function encounteredPokemon(id) {
+    const pokeTracker = getPokedex();
+    const pokeItem = findById(pokeTracker, id);
+    
+    if (pokeItem){
+        pokeItem.encountered++;
+        
+    }
+    else {
+        const newPokeObject = { id: Number(id), encountered: 1, captured: 0 };
+        pokeTracker.push(newPokeObject);
+
+       
+    }
+    setPokedex(pokeTracker);
+}
+
+export function setPokedex(array) {
+    let stringPoke = JSON.stringify(array);
+    localStorage.setItem('POKEDEX', stringPoke);
+}
+export function getPokedex() {
+    const stringyPoke = localStorage.getItem('POKEDEX');
+    if (!stringyPoke) {
+        return [];
+    }
+    const arrayObjectPoke = JSON.parse(stringyPoke);
+    return arrayObjectPoke;
+}
+
