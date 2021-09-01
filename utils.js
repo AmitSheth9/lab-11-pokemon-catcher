@@ -11,7 +11,17 @@ export function getRandomPokemon() {
         randomNum2 = Math.floor(Math.random() * pokeArray.length);
         randomNum3 = Math.floor(Math.random() * pokeArray.length);
     }
-    console.log(randomNum1, randomNum2, randomNum3);
+    
 
     return [pokeArray[randomNum1], pokeArray[randomNum2], pokeArray[randomNum3]];
 }
+
+export function findById(trackerArray, id) {
+    for (let item of trackerArray) {
+        if (Number(item.id) === Number(id)){
+            return item;
+        }
+       
+    }
+}
+
