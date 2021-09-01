@@ -25,7 +25,7 @@ playButton.addEventListener('click', () => {
     randomPokeArray = getRandomPokemon();
     renderPokemon(randomPokeArray);
 });
-
+const resultsLink = document.getElementById('resultslink');
 
 function renderPokemon(randomPokeArray) {
     const pictureOne = document.getElementById('pictureone');
