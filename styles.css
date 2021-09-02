@@ -1,0 +1,36 @@
+body {
+    background-color: beige;
+}
+
+img {
+    height: 18%;
+    width: 18%;
+    cursor: pointer;
+    margin-left: 80px;
+}
+
+button {
+    margin-left: 50px;
+    height: 10%;
+    width: 25%;
+    border: 5px solid yellow;
+    background-color: black;
+    color: yellow;
+    font-size: 25px;
+    cursor: pointer;
+
+}
+
+button:hover {
+    border: 10px solid yellow;
+}
+
+
+a {
+    margin-left: 50px;
+    font-size: 25px;
+}
+
+input {
+    margin-right:10px;
+}
