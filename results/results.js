@@ -19,14 +19,28 @@ results.textContent = `You played 10 games and encountered ${resultsArray.length
 
 
 
+//find by ID we have the id in resultsArray, we compare it with array of
+//we want
+for (let dataItem of pokeArray) {
+    for(let statItem of resultsArray){
+        if(dataItem.id === statItem.id){
+            statItem.name = dataItem.pokemon;
+            console.log(statItem);
+        }
+    }
+}
+console.log(resultsArray);    //names added
 
 
-const nameArray = resultsArray.filter(item =>{
-    return item.pokemon;
-});
+const nameArray = resultsArray.map(item =>{
+    return item.name;
+}); 
+
+
+
 console.log(nameArray);
 
-const captured
+
 const ctx = document.getElementById('myChart');
 
 const myChart = new Chart(ctx, {
@@ -34,8 +48,7 @@ const myChart = new Chart(ctx, {
     data: { 
         labels: nameArray,
         datasets: [{
-            label: ,
-            data: ,
+           
         }]
     },
     options: {
