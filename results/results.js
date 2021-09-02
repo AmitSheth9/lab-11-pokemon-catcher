@@ -22,8 +22,8 @@ results.textContent = `You played 10 games and encountered ${resultsArray.length
 //find by ID we have the id in resultsArray, we compare it with array of
 //we want
 for (let dataItem of pokeArray) {
-    for(let statItem of resultsArray){
-        if(dataItem.id === statItem.id){
+    for (let statItem of resultsArray){
+        if (dataItem.id === statItem.id){
             statItem.name = dataItem.pokemon;
             console.log(statItem);
         }
@@ -50,20 +50,65 @@ const myChart = new Chart(ctx, {
     data: { 
         labels: nameArray,
         datasets: [{
-           label: 'times captured',
-           data: capturedArr,
+            label: 'Times Captured',
+            data: capturedArr,
+            backgroundColor: [
+                'blue',
+                'blue',
+                'blue',
+            ],
+            borderWidth: 2
+
         }]
     },
     options: {
-      responsive: true,
-      plugins: {
-        legend: {
-          position: 'top',
-        },
-        title: {
-          display: true,
-          text: 'Chart.js Bar Chart'
+        responsive: true,
+        plugins: {
+            legend: {
+                position: 'top',
+            },
+            title: {
+                display: true,
+                text: 'Pokemon'
+            }
         }
-      }
     },
-  });
+});
+
+const chartTwo = document.getElementById('charttwo');
+
+const encounteredArr = resultsArray.map(item => {
+    return item.encountered;
+});
+
+console.log(encounteredArr);
+
+const encounteredChart = new Chart(chartTwo, {
+    type: 'bar',
+    data: { 
+        labels: nameArray,
+        datasets: [{
+            label: 'Times Encountered',
+            data: encounteredArr,
+            backgroundColor: [
+                'red',
+                'red',
+                'red',
+            ],
+            borderWidth: 2
+
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                position: 'top',
+            },
+            title: {
+                display: true,
+                text: 'Pokemon'
+            }
+        }
+    },
+});
