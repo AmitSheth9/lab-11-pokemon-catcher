@@ -9,13 +9,13 @@ const results = document.getElementById('results');
 const resultsArray = getPokedex();
 console.log(resultsArray);
 
-const capturedArray = resultsArray.filter(item => {
+const capturedUnique = resultsArray.filter(item => {
     if (item.captured > 0) {
         return item.captured;
     }
 });
-console.log(capturedArray);
-results.textContent = `You played 10 games and encountered ${resultsArray.length} unique Pokemon, and captured ${capturedArray.length} unique Pokemon`;
+console.log(capturedUnique);
+results.textContent = `You played 10 games and encountered ${resultsArray.length} unique Pokemon, and captured ${capturedUnique.length} unique Pokemon`;
 
 
 
@@ -36,7 +36,9 @@ const nameArray = resultsArray.map(item =>{
     return item.name;
 }); 
 
-
+const capturedArr = resultsArray.map(item => {
+    return item.captured;
+});
 
 console.log(nameArray);
 
@@ -48,7 +50,8 @@ const myChart = new Chart(ctx, {
     data: { 
         labels: nameArray,
         datasets: [{
-           
+           label: 'times captured',
+           data: capturedArr,
         }]
     },
     options: {
