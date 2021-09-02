@@ -7,6 +7,9 @@ let randomPokeArray = getRandomPokemon();
 renderPokemon(randomPokeArray);
 const playButton = document.getElementById('playbutton');
 let pokeCaught = 0;
+const resultsLink = document.getElementById('resultslink');
+resultsLink.style.visibility = 'hidden';
+
 
 playButton.addEventListener('click', () => {
     const capturedPokeEl = document.querySelector('input:checked');
@@ -20,12 +23,12 @@ playButton.addEventListener('click', () => {
     console.log(pokeCaught);
     if (pokeCaught > 9) {
         playButton.disabled = true;
+        resultsLink.style.visibility = 'visible';
     }
     
     randomPokeArray = getRandomPokemon();
     renderPokemon(randomPokeArray);
 });
-const resultsLink = document.getElementById('resultslink');
 
 function renderPokemon(randomPokeArray) {
     const pictureOne = document.getElementById('pictureone');

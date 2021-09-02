@@ -53,9 +53,9 @@ const myChart = new Chart(ctx, {
             label: 'Times Captured',
             data: capturedArr,
             backgroundColor: [
-                'blue',
-                'blue',
-                'blue',
+                
+                'brown'
+                
             ],
             borderWidth: 2
 
@@ -91,9 +91,8 @@ const encounteredChart = new Chart(chartTwo, {
             label: 'Times Encountered',
             data: encounteredArr,
             backgroundColor: [
-                'red',
-                'red',
-                'red',
+                'orange',
+                
             ],
             borderWidth: 2
 
