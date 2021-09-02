@@ -9,24 +9,40 @@ const results = document.getElementById('results');
 const resultsArray = getPokedex();
 console.log(resultsArray);
 
-const capturedArray = resultsArray.filter(item => {
+const capturedUnique = resultsArray.filter(item => {
     if (item.captured > 0) {
         return item.captured;
     }
 });
-console.log(capturedArray);
-results.textContent = `You played 10 games and encountered ${resultsArray.length} unique Pokemon, and captured ${capturedArray.length} unique Pokemon`;
+console.log(capturedUnique);
+results.textContent = `You played 10 games and encountered ${resultsArray.length} unique Pokemon, and captured ${capturedUnique.length} unique Pokemon`;
 
 
 
+//find by ID we have the id in resultsArray, we compare it with array of
+//we want
+for (let dataItem of pokeArray) {
+    for(let statItem of resultsArray){
+        if(dataItem.id === statItem.id){
+            statItem.name = dataItem.pokemon;
+            console.log(statItem);
+        }
+    }
+}
+console.log(resultsArray);    //names added
 
 
-const nameArray = resultsArray.filter(item =>{
-    return item.pokemon;
+const nameArray = resultsArray.map(item =>{
+    return item.name;
+}); 
+
+const capturedArr = resultsArray.map(item => {
+    return item.captured;
 });
+
 console.log(nameArray);
 
-const captured
+
 const ctx = document.getElementById('myChart');
 
 const myChart = new Chart(ctx, {
@@ -34,8 +50,8 @@ const myChart = new Chart(ctx, {
     data: { 
         labels: nameArray,
         datasets: [{
-            label: ,
-            data: ,
+           label: 'times captured',
+           data: capturedArr,
         }]
     },
     options: {
