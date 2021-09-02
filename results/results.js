@@ -50,7 +50,7 @@ const myChart = new Chart(ctx, {
     data: { 
         labels: nameArray,
         datasets: [{
-            label: 'times captured',
+            label: 'Times Captured',
             data: capturedArr,
             backgroundColor: [
                 'blue',
@@ -69,7 +69,45 @@ const myChart = new Chart(ctx, {
             },
             title: {
                 display: true,
-                text: 'Chart.js Bar Chart'
+                text: 'Pokemon'
+            }
+        }
+    },
+});
+
+const chartTwo = document.getElementById('charttwo');
+
+const encounteredArr = resultsArray.map(item => {
+    return item.encountered;
+});
+
+console.log(encounteredArr);
+
+const encounteredChart = new Chart(chartTwo, {
+    type: 'bar',
+    data: { 
+        labels: nameArray,
+        datasets: [{
+            label: 'Times Encountered',
+            data: encounteredArr,
+            backgroundColor: [
+                'red',
+                'red',
+                'red',
+            ],
+            borderWidth: 2
+
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                position: 'top',
+            },
+            title: {
+                display: true,
+                text: 'Pokemon'
             }
         }
     },
